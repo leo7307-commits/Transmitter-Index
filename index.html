@@ -203,61 +203,73 @@ vendors.forEach(d=>{
   const e=ev(d.r);
   const fillPct=Math.min(d.r/MAX*100,100);
   const idxTotal=Math.round(d.wi*d.qty);
+  const rTotal=d.total/idxTotal;
   const z=[
-    {w:0.85/MAX*100,   bg:'#B5D4F4'},
-    {w:0.10/MAX*100,   bg:'#9FE1CB'},
-    {w:0.10/MAX*100,   bg:'#C0DD97'},
-    {w:0.10/MAX*100,   bg:'#FAC775'},
+    {w:0.85/MAX*100, bg:'#B5D4F4'},
+    {w:0.10/MAX*100, bg:'#9FE1CB'},
+    {w:0.10/MAX*100, bg:'#C0DD97'},
+    {w:0.10/MAX*100, bg:'#FAC775'},
     {w:(MAX-1.15)/MAX*100, bg:'#F09595'}
   ];
-  const refs=[
-    {pct:0.95/MAX*100},{pct:1.0/MAX*100},{pct:1.05/MAX*100},{pct:1.15/MAX*100}
-  ];
+  const erT=ev(rTotal); const erU=ev(d.r);
+
   vc.innerHTML+=`<div class="card">
-    <div class="vdr-name">${d.v}</div>
-    <div class="vdr-prj">${d.p}</div>
-    <table style="width:100%;border-collapse:collapse;margin-bottom:12px;font-size:12px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+      <div>
+        <div style="font-size:16px;font-weight:700;color:var(--navy)">${d.v}</div>
+        <div style="font-size:11px;color:#999;margin-top:1px">${d.p}</div>
+      </div>
+      <span class="ev-badge" style="background:${e.bg};color:${e.tx};font-size:12px;padding:5px 12px">${e.l}</span>
+    </div>
+    <div style="border-top:2px solid ${e.c};margin:10px 0"></div>
+    <table style="width:100%;border-collapse:collapse">
       <thead>
-        <tr>
-          <td style="width:34%;padding:3px 0;color:#aaa;font-size:10px">항목</td>
-          <td style="width:33%;padding:3px 4px;color:#aaa;font-size:10px;text-align:right">견적</td>
-          <td style="width:33%;padding:3px 4px;color:#aaa;font-size:10px;text-align:right">Index</td>
+        <tr style="background:#f8f9fb">
+          <th style="padding:7px 8px;font-size:11px;color:#666;font-weight:600;text-align:left;border-radius:4px 0 0 0">항목</th>
+          <th style="padding:7px 8px;font-size:11px;color:#666;font-weight:600;text-align:right">견적</th>
+          <th style="padding:7px 8px;font-size:11px;color:#666;font-weight:600;text-align:right">Index</th>
+          <th style="padding:7px 8px;font-size:11px;color:#666;font-weight:600;text-align:center;border-radius:0 4px 0 0">비율</th>
         </tr>
       </thead>
       <tbody>
         <tr style="border-top:1px solid #f0f0f0">
-          <td style="padding:5px 0;color:#888;font-size:11px">총 수량</td>
-          <td style="padding:5px 4px;text-align:right;font-weight:700;color:var(--navy)">${d.qty.toLocaleString()} EA</td>
-          <td style="padding:5px 4px;text-align:right;color:#bbb;font-size:11px">—</td>
+          <td style="padding:8px 8px;font-size:12px;color:#666">총 수량</td>
+          <td style="padding:8px 8px;font-size:13px;font-weight:700;color:var(--navy);text-align:right">${d.qty.toLocaleString()} EA</td>
+          <td style="padding:8px 8px;text-align:right;color:#bbb;font-size:12px">—</td>
+          <td style="padding:8px 8px;text-align:center;color:#bbb;font-size:12px">—</td>
+        </tr>
+        <tr style="border-top:1px solid #f0f0f0;background:#fafafa">
+          <td style="padding:8px 8px;font-size:12px;color:#666">견적 총액</td>
+          <td style="padding:8px 8px;font-size:13px;font-weight:700;color:var(--navy);text-align:right">$${(d.total/1e6).toFixed(2)}M</td>
+          <td style="padding:8px 8px;font-size:13px;color:#555;text-align:right;font-weight:600">$${(idxTotal/1e6).toFixed(2)}M</td>
+          <td style="padding:8px 8px;text-align:center">
+            <span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;background:${erT.bg};color:${erT.tx}">${rTotal.toFixed(3)}</span>
+          </td>
         </tr>
         <tr style="border-top:1px solid #f0f0f0">
-          <td style="padding:5px 0;color:#888;font-size:11px">견적 총액</td>
-          <td style="padding:5px 4px;text-align:right;font-weight:700;color:var(--navy)">$${(d.total/1e6).toFixed(2)}M</td>
-          <td style="padding:5px 4px;text-align:right;color:#666;font-size:11px">$${(idxTotal/1e6).toFixed(2)}M</td>
-        </tr>
-        <tr style="border-top:1px solid #f0f0f0">
-          <td style="padding:5px 0;color:#888;font-size:11px">평균 단가</td>
-          <td style="padding:5px 4px;text-align:right;font-weight:700;color:var(--navy)">$${d.wu.toLocaleString()}</td>
-          <td style="padding:5px 4px;text-align:right;color:#666;font-size:11px">$${d.wi.toLocaleString()}</td>
+          <td style="padding:8px 8px;font-size:12px;color:#666">평균 단가</td>
+          <td style="padding:8px 8px;font-size:13px;font-weight:700;color:var(--navy);text-align:right">$${d.wu.toLocaleString()}</td>
+          <td style="padding:8px 8px;font-size:13px;color:#555;text-align:right;font-weight:600">$${d.wi.toLocaleString()}</td>
+          <td style="padding:8px 8px;text-align:center">
+            <span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;background:${erU.bg};color:${erU.tx}">${d.r.toFixed(3)}</span>
+          </td>
         </tr>
       </tbody>
     </table>
-    <div class="bar-wrap">
-      <div class="bar-lbl-row"><span>0</span><span>0.85</span><span>1.0</span><span>1.15</span><span>1.5</span></div>
-      <div class="bar-zone-bg">
+    <div style="margin-top:12px">
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:#aaa;margin-bottom:4px">
+        <span>0</span><span>0.85</span><span>1.0</span><span>1.15</span><span>1.5</span>
+      </div>
+      <div class="bar-zone-bg" style="height:26px;border-radius:8px">
         ${z.map(z=>`<div class="bar-zone" style="width:${z.w}%;background:${z.bg}"></div>`).join('')}
-        <div class="bar-fill" style="width:${fillPct}%;background:${e.c}">
-          <span class="bar-fill-val">${d.r.toFixed(3)}</span>
+        <div class="bar-fill" style="width:${fillPct}%;background:${e.c};border-radius:8px">
+          <span class="bar-fill-val" style="font-size:12px">${d.r.toFixed(3)}</span>
         </div>
-        ${refs.map(r=>`<div class="bar-tick" style="left:${r.pct}%"></div>`).join('')}
         <div class="bar-ref" style="left:${1.0/MAX*100}%"></div>
       </div>
-      <div style="position:relative;height:16px">
-        <span style="position:absolute;left:${1.0/MAX*100}%;transform:translateX(-50%);font-size:9px;color:#888">1.0</span>
+      <div style="position:relative;height:14px">
+        <span style="position:absolute;left:${1.0/MAX*100}%;transform:translateX(-50%);font-size:9px;color:#999">기준(1.0)</span>
       </div>
-    </div>
-    <div style="margin-top:6px">
-      <span class="ev-badge" style="background:${e.bg};color:${e.tx};font-size:11px">전체 평가 : ${e.l} (${d.r.toFixed(3)})</span>
     </div>
   </div>`;
 });
