@@ -39,13 +39,15 @@ header h1{font-size:15px;font-weight:600;letter-spacing:.3px}
 .kpi-box{background:#f8f9fb;border-radius:6px;padding:6px 8px}
 .kpi-lbl{font-size:10px;color:#888;margin-bottom:1px}
 .kpi-val{font-size:14px;font-weight:700;color:var(--navy)}
-.gauge-wrap{margin-top:8px}
-.gauge-lbl{font-size:10px;color:#888;margin-bottom:4px}
-.gauge-bg{width:100%;height:10px;background:#eee;border-radius:5px;position:relative;overflow:hidden}
-.gauge-fill{height:100%;border-radius:5px;transition:width .8s ease}
-.gauge-mid{position:absolute;left:50%;top:0;bottom:0;width:2px;background:rgba(0,0,0,.2)}
-.ratio-row{display:flex;align-items:center;gap:8px;margin-top:8px}
-.ratio-val{font-size:18px;font-weight:700}
+.bar-wrap{margin-top:10px}
+.bar-lbl-row{display:flex;justify-content:space-between;font-size:9px;color:#aaa;margin-bottom:3px}
+.bar-zone-bg{width:100%;height:22px;border-radius:6px;position:relative;overflow:hidden;background:#f0f0f0;display:flex}
+.bar-zone{height:100%;opacity:.25}
+.bar-fill{position:absolute;top:0;left:0;height:100%;border-radius:6px;transition:width 1s ease;display:flex;align-items:center;justify-content:flex-end;padding-right:6px}
+.bar-fill-val{font-size:11px;font-weight:700;color:#fff;white-space:nowrap;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.bar-ref{position:absolute;top:0;bottom:0;width:2px;background:rgba(0,0,0,.3)}
+.bar-ref-lbl{position:absolute;top:24px;font-size:9px;color:#888;transform:translateX(-50%)}
+.bar-tick{position:absolute;top:0;bottom:0;width:1px;background:rgba(0,0,0,.1)}
 .ev-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:12px}
 
 .cat-tbl{width:100%;border-collapse:collapse;font-size:12px}
@@ -195,9 +197,26 @@ const vendors=[
   {v:'ABB',     p:'FGIP PKG#1',qty:1819,total:3978662,wu:2187,wi:1817,r:1.204}
 ];
 const vc=document.getElementById('vdr-cards');
+const MAX=1.5; // bar scale max
+
 vendors.forEach(d=>{
-  const e=ev(d.r);const pct=Math.min(d.r/2*100,100);const mid=50;
-  const left=Math.min(mid,pct);const w=Math.abs(pct-mid);
+  const e=ev(d.r);
+  const fillPct=Math.min(d.r/MAX*100,100);
+  // zone widths as % of MAX
+  const z=[
+    {w:0.85/MAX*100,   bg:'#B5D4F4'},  // 매우저가 blue
+    {w:0.10/MAX*100,   bg:'#9FE1CB'},  // 저가 teal
+    {w:0.10/MAX*100,   bg:'#C0DD97'},  // 적정 green
+    {w:0.10/MAX*100,   bg:'#FAC775'},  // 고가 amber
+    {w:(MAX-1.15)/MAX*100, bg:'#F09595'} // 매우고가 red
+  ];
+  // reference lines as % of MAX
+  const refs=[
+    {pct:0.95/MAX*100, lbl:'0.95'},
+    {pct:1.0/MAX*100,  lbl:'1.0'},
+    {pct:1.05/MAX*100, lbl:'1.05'},
+    {pct:1.15/MAX*100, lbl:'1.15'},
+  ];
   vc.innerHTML+=`<div class="card">
     <div class="vdr-name">${d.v}</div>
     <div class="vdr-prj">${d.p}</div>
@@ -207,16 +226,22 @@ vendors.forEach(d=>{
       <div class="kpi-box"><div class="kpi-lbl">Index 기준단가</div><div class="kpi-val" style="color:#666">$${d.wi.toLocaleString()}</div></div>
       <div class="kpi-box"><div class="kpi-lbl">견적 총액</div><div class="kpi-val" style="color:#666">$${(d.total/1e6).toFixed(2)}M</div></div>
     </div>
-    <div class="gauge-wrap">
-      <div class="gauge-lbl">단가 비율 (실제/Index)</div>
-      <div class="gauge-bg">
-        <div class="gauge-fill" style="margin-left:${left}%;width:${w}%;background:${e.c}"></div>
-        <div class="gauge-mid"></div>
+    <div class="bar-wrap">
+      <div class="bar-lbl-row"><span>0</span><span>0.85</span><span>1.0</span><span>1.15</span><span>1.5</span></div>
+      <div class="bar-zone-bg">
+        ${z.map(z=>`<div class="bar-zone" style="width:${z.w}%;background:${z.bg}"></div>`).join('')}
+        <div class="bar-fill" style="width:${fillPct}%;background:${e.c}">
+          <span class="bar-fill-val">${d.r.toFixed(3)}</span>
+        </div>
+        <div class="bar-ref" style="left:${1.0/MAX*100}%"></div>
+        ${refs.map(r=>`<div class="bar-tick" style="left:${r.pct}%"></div>`).join('')}
+      </div>
+      <div style="position:relative;height:16px">
+        <span style="position:absolute;left:${1.0/MAX*100}%;transform:translateX(-50%);font-size:9px;color:#888">1.0</span>
       </div>
     </div>
-    <div class="ratio-row">
-      <span class="ratio-val" style="color:${e.c}">${d.r.toFixed(3)}</span>
-      <span class="ev-badge" style="background:${e.bg};color:${e.tx}">${e.l}</span>
+    <div style="margin-top:6px">
+      <span class="ev-badge" style="background:${e.bg};color:${e.tx};font-size:11px">전체 평가 : ${e.l} (${d.r.toFixed(3)})</span>
     </div>
   </div>`;
 });
