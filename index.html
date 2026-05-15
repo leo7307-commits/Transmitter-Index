@@ -243,7 +243,7 @@ vendors.forEach(d=>{
           <td style="padding:8px 8px;font-size:13px;font-weight:700;color:var(--navy);text-align:right">$${(d.total/1e6).toFixed(2)}M</td>
           <td style="padding:8px 8px;font-size:13px;color:#555;text-align:right;font-weight:600">$${(idxTotal/1e6).toFixed(2)}M</td>
           <td style="padding:8px 8px;text-align:center">
-            <span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;background:${erT.bg};color:${erT.tx}">${rTotal.toFixed(3)}</span>
+            <span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;background:${erT.bg};color:${erT.tx}">${(rTotal*100).toFixed(1)}%</span>
           </td>
         </tr>
         <tr style="border-top:1px solid #f0f0f0">
@@ -251,7 +251,7 @@ vendors.forEach(d=>{
           <td style="padding:8px 8px;font-size:13px;font-weight:700;color:var(--navy);text-align:right">$${d.wu.toLocaleString()}</td>
           <td style="padding:8px 8px;font-size:13px;color:#555;text-align:right;font-weight:600">$${d.wi.toLocaleString()}</td>
           <td style="padding:8px 8px;text-align:center">
-            <span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;background:${erU.bg};color:${erU.tx}">${d.r.toFixed(3)}</span>
+            <span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;background:${erU.bg};color:${erU.tx}">${(d.r*100).toFixed(1)}%</span>
           </td>
         </tr>
       </tbody>
@@ -263,7 +263,7 @@ vendors.forEach(d=>{
       <div class="bar-zone-bg" style="height:26px;border-radius:8px">
         ${z.map(z=>`<div class="bar-zone" style="width:${z.w}%;background:${z.bg}"></div>`).join('')}
         <div class="bar-fill" style="width:${fillPct}%;background:${e.c};border-radius:8px">
-          <span class="bar-fill-val" style="font-size:12px">${d.r.toFixed(3)}</span>
+          <span class="bar-fill-val" style="font-size:12px">${(d.r*100).toFixed(1)}%</span>
         </div>
         <div class="bar-ref" style="left:${1.0/MAX*100}%"></div>
       </div>
@@ -286,7 +286,7 @@ const cats=[
 function ctd(q,u,r){
   if(!q)return'<td>—</td><td>—</td><td>—</td>';
   const e=ev(r);
-  return`<td>${q.toLocaleString()}</td><td>$${u.toLocaleString()}</td><td><span class="ev-badge" style="background:${e.bg};color:${e.tx}">${r.toFixed(3)} ${e.l}</span></td>`;
+  return`<td>${q.toLocaleString()}</td><td>$${u.toLocaleString()}</td><td><span class="ev-badge" style="background:${e.bg};color:${e.tx}">${(r*100).toFixed(1)}% ${e.l}</span></td>`;
 }
 const ct=document.getElementById('cat-tbl');
 ct.innerHTML=`<thead><tr>
@@ -431,7 +431,7 @@ function renderPred(){
     <td style="font-weight:600">${r.v}</td>
     <td style="text-align:center">${r.q}</td>
     <td style="text-align:right">$${r.u.toLocaleString()}</td>
-    <td style="text-align:center;font-weight:700;color:${r.e.c}">${r.rat?r.rat.toFixed(3):''}</td>
+    <td style="text-align:center;font-weight:700;color:${r.e.c}">${r.rat?(r.rat*100).toFixed(1)+'%':''}</td>
     <td><span class="ev-badge" style="background:${r.e.bg};color:${r.e.tx};font-size:9px">${r.e.l}</span></td>
   </tr>`).join('')+'</tbody>';
 }
