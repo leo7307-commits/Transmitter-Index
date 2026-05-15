@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)file:///C:/Users/HDEC/Downloads/index_1.html -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transmitter Unit Price Index</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f5f6fa;color:#1a1a2e;font-size:14px}
+:root{--navy:#1F3864;--blue:#2E75B6;--sky:#DEEAF1;--green:#70AD47;--lgr:#E2EFDA;--orange:#F4B942;--lor:#FCE4D6;--red:#C00000;--lred:#FFE0E0;--gray:#F2F2F2;--dgray:#D9D9D9;--white:#ffffff}
+
+header{background:var(--navy);color:#fff;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+header h1{font-size:15px;font-weight:600;letter-spacing:.3px}
+.hdr-meta{font-size:11px;opacity:.75}
+.stat-pills{display:flex;gap:8px;flex-wrap:wrap}
+.pill{background:rgba(255,255,255,.15);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600}
+
+.container{max-width:1100px;margin:0 auto;padding:16px}
+.sec-title{font-size:12px;font-weight:600;color:#555;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--dgray);padding-bottom:6px;margin:0 0 12px}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:18px}
+@media(max-width:700px){.grid2,.grid3{grid-template-columns:1fr}.grid5{grid-template-columns:repeat(2,1fr)}}
+
+.card{background:#fff;border-radius:10px;border:1px solid #e0e4ef;padding:14px 16px}
+.card-sm{background:#fff;border-radius:8px;border:1px solid #e0e4ef;padding:10px 12px}
+
+.ev-card{border-radius:8px;padding:10px 12px;border-left:4px solid}
+.ev-card .ev-lbl{font-size:11px;font-weight:700;margin-bottom:4px}
+.ev-card .ev-range{font-size:18px;font-weight:700;margin-bottom:3px}
+.ev-card .ev-desc{font-size:10px;opacity:.8}
+
+.vdr-name{font-size:14px;font-weight:700;margin-bottom:2px}
+.vdr-prj{font-size:11px;color:#777;margin-bottom:10px}
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
+.kpi-box{background:#f8f9fb;border-radius:6px;padding:6px 8px}
+.kpi-lbl{font-size:10px;color:#888;margin-bottom:1px}
+.kpi-val{font-size:14px;font-weight:700;color:var(--navy)}
+.gauge-wrap{margin-top:8px}
+.gauge-lbl{font-size:10px;color:#888;margin-bottom:4px}
+.gauge-bg{width:100%;height:10px;background:#eee;border-radius:5px;position:relative;overflow:hidden}
+.gauge-fill{height:100%;border-radius:5px;transition:width .8s ease}
+.gauge-mid{position:absolute;left:50%;top:0;bottom:0;width:2px;background:rgba(0,0,0,.2)}
+.ratio-row{display:flex;align-items:center;gap:8px;margin-top:8px}
+.ratio-val{font-size:18px;font-weight:700}
+.ev-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:12px}
+
+.cat-tbl{width:100%;border-collapse:collapse;font-size:12px}
+.cat-tbl th{font-size:10px;font-weight:600;color:#666;text-align:center;padding:6px 8px;background:#f8f9fb;border-bottom:2px solid #e0e4ef;white-space:nowrap}
+.cat-tbl td{padding:6px 8px;border-bottom:1px solid #f0f0f0;text-align:center}
+.cat-tbl td:first-child{text-align:left;font-weight:600;font-size:11px}
+.cat-tbl tr:last-child td{border-bottom:none}
+.cat-tbl tr:nth-child(even) td{background:#fafafa}
+
+.eq-box{background:#f8f9fb;border:1px solid #dde3f0;border-radius:8px;padding:14px 16px;font-family:'Courier New',monospace;font-size:13px;line-height:2}
+.eq-box .ref{font-size:11px;color:#888;margin-bottom:8px}
+.eq-box .coef-row{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.coef-item{display:flex;align-items:center;gap:8px;font-size:11px}
+.coef-bar-bg{flex:1;height:14px;background:#eee;border-radius:3px;position:relative;overflow:hidden}
+.coef-bar-fill{height:100%;border-radius:3px;position:absolute;top:0;left:0}
+.coef-lbl{width:220px;text-align:right;font-size:10px;color:#555;flex-shrink:0}
+.coef-num{width:50px;font-weight:700;font-size:11px;flex-shrink:0}
+
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.filter-row select{font-size:12px;padding:5px 10px;border-radius:6px;border:1px solid #cdd3e0;background:#fff;color:#1a1a2e}
+.filter-count{font-size:11px;color:#999;margin-left:auto}
+.pred-tbl{width:100%;border-collapse:collapse;font-size:11px}
+.pred-tbl th{font-size:10px;font-weight:600;color:#666;padding:6px 8px;background:#f8f9fb;border-bottom:2px solid #e0e4ef;white-space:nowrap;text-align:center}
+.pred-tbl td{padding:5px 8px;border-bottom:1px solid #f0f0f0;text-align:center}
+.pred-tbl td:nth-child(1),.pred-tbl td:nth-child(2),.pred-tbl td:nth-child(3){text-align:left}
+.pred-tbl tr:nth-child(even) td{background:#fafafa}
+.pred-tbl tr:last-child td{border-bottom:none}
+
+footer{background:#1a1a2e;color:rgba(255,255,255,.5);text-align:center;padding:12px;font-size:10px;margin-top:24px}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Field Transmitter — Unit Price Index &amp; Evaluation</h1>
+    <div class="hdr-meta">SAFA PKG#1 (Yokogawa) &nbsp;·&nbsp; SAFA PKG#2 (Emerson) &nbsp;·&nbsp; FGIP PKG#1 (ABB) &nbsp;·&nbsp; 기준연도 2022</div>
+  </div>
+  <div class="stat-pills">
+    <span class="pill">R² = 0.781</span>
+    <span class="pill">RMSE = 1,082 USD</span>
+    <span class="pill">n = 106</span>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- ① 평가기준 -->
+<div class="card" style="margin-bottom:18px">
+  <div class="sec-title">① 평가 기준 (Evaluation Criteria) &nbsp; 비율 = 실제단가 / Index</div>
+  <div class="grid5">
+    <div class="ev-card" style="background:#E6F1FB;border-color:#185FA5">
+      <div class="ev-lbl" style="color:#185FA5">매우 저가</div>
+      <div class="ev-range" style="color:#185FA5">≤ 0.85</div>
+      <div class="ev-desc" style="color:#185FA5">범위 누락·오류 검토</div>
+    </div>
+    <div class="ev-card" style="background:#E1F5EE;border-color:#0F6E56">
+      <div class="ev-lbl" style="color:#0F6E56">저가</div>
+      <div class="ev-range" style="color:#0F6E56">0.85–0.95</div>
+      <div class="ev-desc" style="color:#0F6E56">발주처 유리·단가 유지</div>
+    </div>
+    <div class="ev-card" style="background:#EAF3DE;border-color:#3B6D11">
+      <div class="ev-lbl" style="color:#3B6D11">적정</div>
+      <div class="ev-range" style="color:#3B6D11">0.95–1.05</div>
+      <div class="ev-desc" style="color:#3B6D11">시장 평균 수준</div>
+    </div>
+    <div class="ev-card" style="background:#FAEEDA;border-color:#BA7517">
+      <div class="ev-lbl" style="color:#BA7517">고가</div>
+      <div class="ev-range" style="color:#BA7517">1.05–1.15</div>
+      <div class="ev-desc" style="color:#BA7517">단가 인하 협상 필요</div>
+    </div>
+    <div class="ev-card" style="background:#FCEBEB;border-color:#A32D2D">
+      <div class="ev-lbl" style="color:#A32D2D">매우 고가</div>
+      <div class="ev-range" style="color:#A32D2D">&gt; 1.15</div>
+      <div class="ev-desc" style="color:#A32D2D">강력 협상·재견적 요청</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② Vendor별 -->
+<div class="sec-title">② Vendor별 전체 단가 적정성</div>
+<div class="grid3" id="vdr-cards"><div class="card">
+    <div class="vdr-name">Yokogawa</div>
+    <div class="vdr-prj">SAFA PKG#1</div>
+    <div class="kpi-grid">
+      <div class="kpi-box"><div class="kpi-lbl">총 수량</div><div class="kpi-val">1,837 EA</div></div>
+      <div class="kpi-box"><div class="kpi-lbl">가중평균단가</div><div class="kpi-val">$1,946</div></div>
+      <div class="kpi-box"><div class="kpi-lbl">Index 기준단가</div><div class="kpi-val" style="color:#666">$2,131</div></div>
+      <div class="kpi-box"><div class="kpi-lbl">견적 총액</div><div class="kpi-val" style="color:#666">$3.58M</div></div>
+    </div>
+    <div class="gauge-wrap">
+      <div class="gauge-lbl">단가 비율 (실제/Index)</div>
+      <div class="gauge-bg">
+        <div class="gauge-fill" style="margin-left:45.65%;width:4.350000000000001%;background:#0F6E56"></div>
+        <div class="gauge-mid"></div>
+      </div>
+    </div>
+    <div class="ratio-row">
+      <span class="ratio-val" style="color:#0F6E56">0.913</span>
+      <span class="ev-badge" style="background:#E1F5EE;color:#085041">저가</span>
+    </div>
+  </div><div class="card">
+    <div class="vdr-name">Emerson</div>
+    <div class="vdr-prj">SAFA PKG#2</div>
+    <div class="kpi-grid">
+      <div class="kpi-box"><div class="kpi-lbl">총 수량</div><div class="kpi-val">846 EA</div></div>
+      <div class="kpi-box"><div class="kpi-lbl">가중평균단가</div><div class="kpi-val">$1,548</div></div>
+      <div class="kpi-box"><div class="kpi-lbl">Index 기준단가</div><div class="kpi-val" style="color:#666">$1,944</div></div>
+      <div class="kpi-box"><div class="kpi-lbl">견적 총액</div><div class="kpi-val" style="color:#666">$1.31M</div></div>
+    </div>
+    <div class="gauge-wrap">
+      <div class="gauge-lbl">단가 비율 (실제/Index)</div>
+      <div class="gauge-bg">
+        <div class="gauge-fill" style="margin-left:39.800000000000004%;width:10.199999999999996%;background:#185FA5"></div>
+        <div class="gauge-mid"></div>
+      </div>
+    </div>
+    <div class="ratio-row">
+      <span class="ratio-val" style="color:#185FA5">0.796</span>
+      <span class="ev-badge" style="background:#E6F1FB;color:#0C447C">매우 저가</span>
+    </div>
+  </div><div class="card">
+    <div class="vdr-name">ABB</div>
+    <div class="vdr-prj">FGIP PKG#1</div>
+    <div class="kpi-grid">
+      <div class="kpi-box"><div class="kpi-lbl">총 수량</div><div class="kpi-val">1,819 EA</div></div>
+      <div class="kpi-box"><div class="kpi-lbl">가중평균단가</div><div class="kpi-val">$2,187</div></div>
+      <div class="kpi-box"><div class="kpi-lbl">Index 기준단가</div><div class="kpi-val" style="color:#666">$1,817</div></div>
+      <div class="kpi-box"><div class="kpi-lbl">견적 총액</div><div class="kpi-val" style="color:#666">$3.98M</div></div>
+    </div>
+    <div class="gauge-wrap">
+      <div class="gauge-lbl">단가 비율 (실제/Index)</div>
+      <div class="gauge-bg">
+        <div class="gauge-fill" style="margin-left:50%;width:10.199999999999996%;background:#A32D2D"></div>
+        <div class="gauge-mid"></div>
+      </div>
+    </div>
+    <div class="ratio-row">
+      <span class="ratio-val" style="color:#A32D2D">1.204</span>
+      <span class="ev-badge" style="background:#FCEBEB;color:#791F1F">매우 고가</span>
+    </div>
+  </div></div>
+
+<!-- ③ Category별 -->
+<div class="card" style="margin-bottom:18px">
+  <div class="sec-title">③ Category별 단가 적정성 (가중평균)</div>
+  <div style="overflow-x:auto">
+    <table class="cat-tbl" id="cat-tbl"><thead><tr>
+  <th>Category</th>
+  <th colspan="3" style="background:#deeaf1">Yokogawa / SAFA PKG#1</th>
+  <th colspan="3" style="background:#daeaff">Emerson / SAFA PKG#2</th>
+  <th colspan="3" style="background:#fce4d6">ABB / FGIP PKG#1</th>
+</tr><tr>
+  <th>Type</th>
+  <th>수량</th><th>가중평균단가</th><th>비율·평가</th>
+  <th>수량</th><th>가중평균단가</th><th>비율·평가</th>
+  <th>수량</th><th>가중평균단가</th><th>비율·평가</th>
+</tr></thead><tbody><tr><td>DP FLOW TRANSMITTER</td><td>367</td><td>$2,752</td><td><span class="ev-badge" style="background:#EAF3DE;color:#375623">0.958 적정</span></td><td>273</td><td>$1,870</td><td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C">0.788 매우 저가</span></td><td>350</td><td>$3,167</td><td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F">1.196 매우 고가</span></td></tr><tr><td>INTEGRAL ORIFICE FLOWMETER</td><td>98</td><td>$3,516</td><td><span class="ev-badge" style="background:#E1F5EE;color:#085041">0.948 저가</span></td><td>16</td><td>$4,698</td><td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F">1.354 매우 고가</span></td><td>52</td><td>$3,661</td><td><span class="ev-badge" style="background:#EAF3DE;color:#375623">0.996 적정</span></td></tr><tr><td>DP LEVEL TRANSMITTER</td><td>35</td><td>$2,138</td><td><span class="ev-badge" style="background:#E1F5EE;color:#085041">0.898 저가</span></td><td>18</td><td>$1,489</td><td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C">0.787 매우 저가</span></td><td>22</td><td>$3,077</td><td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F">1.304 매우 고가</span></td></tr><tr><td>PRESSURE TRANSMITTER</td><td>567</td><td>$1,580</td><td><span class="ev-badge" style="background:#E1F5EE;color:#085041">0.898 저가</span></td><td>291</td><td>$1,394</td><td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C">0.765 매우 저가</span></td><td>522</td><td>$1,954</td><td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F">1.285 매우 고가</span></td></tr><tr><td>DIFF. PRESSURE TRANSMITTER</td><td>443</td><td>$2,325</td><td><span class="ev-badge" style="background:#E1F5EE;color:#085041">0.919 저가</span></td><td>126</td><td>$1,639</td><td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C">0.780 매우 저가</span></td><td>301</td><td>$3,279</td><td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F">1.178 매우 고가</span></td></tr><tr><td>TEMPERATURE TRANSMITTER</td><td>242</td><td>$649</td><td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C">0.742 매우 저가</span></td><td>66</td><td>$572</td><td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C">0.654 매우 저가</span></td><td>535</td><td>$1,014</td><td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F">1.159 매우 고가</span></td></tr><tr><td>REMOTE INDICATOR</td><td>85</td><td>$742</td><td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C">0.763 매우 저가</span></td><td>56</td><td>$847</td><td><span class="ev-badge" style="background:#E1F5EE;color:#085041">0.871 저가</span></td><td>37</td><td>$1,694</td><td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F">1.741 매우 고가</span></td></tr></tbody></table>
+  </div>
+</div>
+
+<!-- ④⑤ Index기준 + 회귀계수 -->
+<div class="grid2" style="margin-bottom:18px">
+  <div class="card">
+    <div class="sec-title">④ Index 산정기준 (회귀방정식)</div>
+    <div class="eq-box">
+      <div class="ref">기준 Type : DIFF. PRESSURE TRANSMITTER</div>
+      <div><b>Index</b> = β₀ + Σβᵢ·Type + β_mat·MatCode + β_size·SzCode</div>
+      <div style="margin-top:10px;padding-top:10px;border-top:1px solid #dde;font-size:12px">
+        <div>β₀ (intercept) &nbsp;&nbsp;= <b style="color:var(--navy)">651.99 USD</b></div>
+        <div>β_mat (재질코드) = <b style="color:var(--navy)">+962.37 USD / 등급</b></div>
+        <div>β_size (사이즈)  = <b style="color:var(--navy)">+280.12 USD / 등급</b></div>
+      </div>
+      <div style="margin-top:10px;font-size:10px;color:#888">
+        Mat Code: 316SS=1, Alloy·6Mo·SuperDuplex=2, Hastelloy=3<br>
+        Size Code: N/A=0, 150#=1, 300/600#=2, 900#=3
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="sec-title">⑤ 회귀계수 (Type별 β값, vs 기준)</div>
+    <div id="coef-section"><div class="coef-item" style="margin:3px 0">
+    <div class="coef-lbl">DP FLOW TX (REMOTE SEAL)</div>
+    <div class="coef-bar-bg"><div class="coef-bar-fill" style="width:100%;background:#185FA5"></div></div>
+    <div class="coef-num" style="color:#185FA5">+4614</div>
+  </div><div class="coef-item" style="margin:3px 0">
+    <div class="coef-lbl">DIFF. PRESSURE TX (REMOTE SEAL)</div>
+    <div class="coef-bar-bg"><div class="coef-bar-fill" style="width:99.28478543563068%;background:#185FA5"></div></div>
+    <div class="coef-num" style="color:#185FA5">+4581</div>
+  </div><div class="coef-item" style="margin:3px 0">
+    <div class="coef-lbl">INTEGRAL ORIFICE FLOWMETER</div>
+    <div class="coef-bar-bg"><div class="coef-bar-fill" style="width:33.398352839185094%;background:#185FA5"></div></div>
+    <div class="coef-num" style="color:#185FA5">+1541</div>
+  </div><div class="coef-item" style="margin:3px 0">
+    <div class="coef-lbl">PRESSURE TX (REMOTE SEAL)</div>
+    <div class="coef-bar-bg"><div class="coef-bar-fill" style="width:22.01993931512787%;background:#185FA5"></div></div>
+    <div class="coef-num" style="color:#185FA5">+1016</div>
+  </div><div class="coef-item" style="margin:3px 0">
+    <div class="coef-lbl">DP FLOW TX (DIAPHRAGM SEAL)</div>
+    <div class="coef-bar-bg"><div class="coef-bar-fill" style="width:21.30472475075856%;background:#185FA5"></div></div>
+    <div class="coef-num" style="color:#185FA5">+983</div>
+  </div><div class="coef-item" style="margin:3px 0">
+    <div class="coef-lbl">DP LEVEL TX (DIAPHRAGM SEAL)</div>
+    <div class="coef-bar-bg"><div class="coef-bar-fill" style="width:18.877329865626354%;background:#185FA5"></div></div>
+    <div class="coef-num" style="color:#185FA5">+871</div>
+  </div><div class="coef-item" style="margin:3px 0">
+    <div class="coef-lbl">DIFF. PRESSURE TX (DIAPHRAGM SEAL)</div>
+    <div class="coef-bar-bg"><div class="coef-bar-fill" style="width:12.917208495882099%;background:#185FA5"></div></div>
+    <div class="coef-num" style="color:#185FA5">+596</div>
+  </div><div class="coef-item" style="margin:3px 0">
+    <div class="coef-lbl">DP FLOW TX</div>
+    <div class="coef-bar-bg"><div class="coef-bar-fill" style="width:1.4737754659731253%;background:#A32D2D"></div></div>
+    <div class="coef-num" style="color:#A32D2D">-68</div>
+  </div><div class="coef-item" style="margin:3px 0">
+    <div class="coef-lbl">DP LEVEL TX</div>
+    <div class="coef-bar-bg"><div class="coef-bar-fill" style="width:0.9102730819245773%;background:#A32D2D"></div></div>
+    <div class="coef-num" style="color:#A32D2D">-42</div>
+  </div><div class="coef-item" style="margin:3px 0">
+    <div class="coef-lbl">PRESSURE TX</div>
+    <div class="coef-bar-bg"><div class="coef-bar-fill" style="width:8.972691807542263%;background:#A32D2D"></div></div>
+    <div class="coef-num" style="color:#A32D2D">-414</div>
+  </div><div class="coef-item" style="margin:3px 0">
+    <div class="coef-lbl">PRESSURE TX (DIAPHRAGM SEAL)</div>
+    <div class="coef-bar-bg"><div class="coef-bar-fill" style="width:11.31339401820546%;background:#A32D2D"></div></div>
+    <div class="coef-num" style="color:#A32D2D">-522</div>
+  </div><div class="coef-item" style="margin:3px 0">
+    <div class="coef-lbl">REMOTE INDICATOR</div>
+    <div class="coef-bar-bg"><div class="coef-bar-fill" style="width:13.892501083658432%;background:#A32D2D"></div></div>
+    <div class="coef-num" style="color:#A32D2D">-641</div>
+  </div><div class="coef-item" style="margin:3px 0">
+    <div class="coef-lbl">TEMPERATURE TRANSMITTER</div>
+    <div class="coef-bar-bg"><div class="coef-bar-fill" style="width:16.038144776766362%;background:#A32D2D"></div></div>
+    <div class="coef-num" style="color:#A32D2D">-740</div>
+  </div></div>
+  </div>
+</div>
+
+<!-- ⑥ 예측가격 List -->
+<div class="card">
+  <div class="sec-title">⑥ 예측 가격 List (Index vs 실제단가)</div>
+  <div class="filter-row">
+    <select id="f-type" onchange="renderPred()"><option value="">전체 Type</option><option value="DP FLOW TRANSMITTER">DP FLOW TRANSMITTER</option><option value="DP FLOW TX (DIAPH. SEAL)">DP FLOW TX (DIAPH. SEAL)</option><option value="DP FLOW TX (REMOTE SEAL)">DP FLOW TX (REMOTE SEAL)</option><option value="INTEGRAL ORIFICE FM">INTEGRAL ORIFICE FM</option><option value="DP LEVEL TRANSMITTER">DP LEVEL TRANSMITTER</option><option value="DP LEVEL TX (DIAPH. SEAL)">DP LEVEL TX (DIAPH. SEAL)</option><option value="PRESSURE TRANSMITTER">PRESSURE TRANSMITTER</option><option value="PRESSURE TX (DIAPH. SEAL)">PRESSURE TX (DIAPH. SEAL)</option><option value="PRESSURE TX (REMOTE SEAL)">PRESSURE TX (REMOTE SEAL)</option><option value="DIFF. PRESSURE TX">DIFF. PRESSURE TX</option><option value="DIFF. PRESSURE TX (DIAPH.)">DIFF. PRESSURE TX (DIAPH.)</option><option value="DIFF. PRESSURE TX (REMOTE)">DIFF. PRESSURE TX (REMOTE)</option><option value="TEMPERATURE TRANSMITTER">TEMPERATURE TRANSMITTER</option><option value="REMOTE INDICATOR">REMOTE INDICATOR</option></select>
+    <select id="f-vendor" onchange="renderPred()">
+      <option value="">전체 Vendor</option>
+      <option>Yokogawa</option><option>Emerson</option><option>ABB</option>
+    </select>
+    <select id="f-eval" onchange="renderPred()">
+      <option value="">전체 평가</option>
+      <option>매우 저가</option><option>저가</option><option>적정</option>
+      <option>고가</option><option>매우 고가</option>
+    </select>
+    <span class="filter-count" id="pred-count">102건</span>
+  </div>
+  <div style="overflow-x:auto"><table class="pred-tbl" id="pred-tbl"><thead><tr>
+    <th>Type</th><th>Material</th><th>Size</th>
+    <th>Index(USD)</th><th>Vendor</th><th>수량</th>
+    <th>실제단가(USD)</th><th>비율</th><th>평가</th>
+  </tr></thead><tbody><tr>
+    <td style="font-size:10px">DP FLOW TRANSMITTER</td>
+    <td style="font-size:10px">Alloy 625</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$2,509</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">56</td>
+    <td style="text-align:right">$2,010</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.801</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TRANSMITTER</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$1,547</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">70</td>
+    <td style="text-align:right">$1,100</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.711</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TRANSMITTER</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$1,547</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">107</td>
+    <td style="text-align:right">$1,342</td>
+    <td style="text-align:center;font-weight:700;color:#0F6E56">0.868</td>
+    <td><span class="ev-badge" style="background:#E1F5EE;color:#085041;font-size:9px">저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TRANSMITTER</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$1,547</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">253</td>
+    <td style="text-align:right">$2,301</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.488</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TRANSMITTER</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$2,509</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">40</td>
+    <td style="text-align:right">$1,870</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.745</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TRANSMITTER</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$2,509</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">110</td>
+    <td style="text-align:right">$1,828</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.729</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TRANSMITTER</td>
+    <td style="font-size:10px">Hastelloy C-276</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$3,471</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">51</td>
+    <td style="text-align:right">$3,290</td>
+    <td style="text-align:center;font-weight:700;color:#0F6E56">0.948</td>
+    <td><span class="ev-badge" style="background:#E1F5EE;color:#085041;font-size:9px">저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">150# RF</td>
+    <td style="text-align:right;font-weight:700">$2,878</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">41</td>
+    <td style="text-align:right">$2,248</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.781</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">150# RF</td>
+    <td style="text-align:right;font-weight:700">$2,878</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">10</td>
+    <td style="text-align:right">$2,404</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.835</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$3,158</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">35</td>
+    <td style="text-align:right">$2,205</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.698</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">600# RF</td>
+    <td style="text-align:right;font-weight:700">$3,158</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">28</td>
+    <td style="text-align:right">$2,392</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.758</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">900# RTJ</td>
+    <td style="text-align:right;font-weight:700">$3,438</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">4</td>
+    <td style="text-align:right">$2,580</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.750</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">150# FF</td>
+    <td style="text-align:right;font-weight:700">$3,840</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">21</td>
+    <td style="text-align:right">$5,164</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.345</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">150# FF</td>
+    <td style="text-align:right;font-weight:700">$3,840</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">43</td>
+    <td style="text-align:right">$3,051</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.794</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$4,120</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">28</td>
+    <td style="text-align:right">$5,274</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.280</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$4,120</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">2</td>
+    <td style="text-align:right">$3,496</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.848</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">900# RTJ</td>
+    <td style="text-align:right;font-weight:700">$4,400</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">6</td>
+    <td style="text-align:right">$7,380</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.677</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">Alloy 625</td>
+    <td style="white-space:nowrap;font-size:10px">150# RF</td>
+    <td style="text-align:right;font-weight:700">$3,840</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">12</td>
+    <td style="text-align:right">$5,164</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.345</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">Alloy 625</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$4,120</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">22</td>
+    <td style="text-align:right">$5,274</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.280</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">Alloy 625</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$4,120</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">1</td>
+    <td style="text-align:right">$3,495</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.848</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TX (REMOTE SEAL)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$6,789</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">10</td>
+    <td style="text-align:right">$4,336</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.639</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TX (REMOTE SEAL)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">600# RF</td>
+    <td style="text-align:right;font-weight:700">$6,789</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">12</td>
+    <td style="text-align:right">$4,608</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.679</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TX (REMOTE SEAL)</td>
+    <td style="font-size:10px">Hastelloy (Gold)</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$8,714</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">21</td>
+    <td style="text-align:right">$10,743</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.233</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP FLOW TX (REMOTE SEAL)</td>
+    <td style="font-size:10px">Hastelloy (Gold)</td>
+    <td style="white-space:nowrap;font-size:10px">600# RF</td>
+    <td style="text-align:right;font-weight:700">$8,714</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">3</td>
+    <td style="text-align:right">$11,409</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.309</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">INTEGRAL ORIFICE FM</td>
+    <td style="font-size:10px">Bronze</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$3,716</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">1</td>
+    <td style="text-align:right">$4,368</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.176</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">INTEGRAL ORIFICE FM</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">150# RF</td>
+    <td style="text-align:right;font-weight:700">$3,436</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">34</td>
+    <td style="text-align:right">$3,284</td>
+    <td style="text-align:center;font-weight:700;color:#3B6D11">0.956</td>
+    <td><span class="ev-badge" style="background:#EAF3DE;color:#375623;font-size:9px">적정</span></td>
+  </tr><tr>
+    <td style="font-size:10px">INTEGRAL ORIFICE FM</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">150# RF</td>
+    <td style="text-align:right;font-weight:700">$3,436</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">14</td>
+    <td style="text-align:right">$4,664</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.358</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">INTEGRAL ORIFICE FM</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">150# RF</td>
+    <td style="text-align:right;font-weight:700">$3,436</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">43</td>
+    <td style="text-align:right">$3,587</td>
+    <td style="text-align:center;font-weight:700;color:#3B6D11">1.044</td>
+    <td><span class="ev-badge" style="background:#EAF3DE;color:#375623;font-size:9px">적정</span></td>
+  </tr><tr>
+    <td style="font-size:10px">INTEGRAL ORIFICE FM</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$3,716</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">26</td>
+    <td style="text-align:right">$3,457</td>
+    <td style="text-align:center;font-weight:700;color:#0F6E56">0.930</td>
+    <td><span class="ev-badge" style="background:#E1F5EE;color:#085041;font-size:9px">저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">INTEGRAL ORIFICE FM</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$3,716</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">1</td>
+    <td style="text-align:right">$5,506</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.482</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">INTEGRAL ORIFICE FM</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">600# RF</td>
+    <td style="text-align:right;font-weight:700">$3,716</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">6</td>
+    <td style="text-align:right">$3,582</td>
+    <td style="text-align:center;font-weight:700;color:#3B6D11">0.964</td>
+    <td><span class="ev-badge" style="background:#EAF3DE;color:#375623;font-size:9px">적정</span></td>
+  </tr><tr>
+    <td style="font-size:10px">INTEGRAL ORIFICE FM</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">600# RF</td>
+    <td style="text-align:right;font-weight:700">$3,716</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">3</td>
+    <td style="text-align:right">$2,362</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.636</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">INTEGRAL ORIFICE FM</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">900# RTJ</td>
+    <td style="text-align:right;font-weight:700">$3,996</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">32</td>
+    <td style="text-align:right">$3,799</td>
+    <td style="text-align:center;font-weight:700;color:#3B6D11">0.951</td>
+    <td><span class="ev-badge" style="background:#EAF3DE;color:#375623;font-size:9px">적정</span></td>
+  </tr><tr>
+    <td style="font-size:10px">INTEGRAL ORIFICE FM</td>
+    <td style="font-size:10px">Hastelloy C-276</td>
+    <td style="white-space:nowrap;font-size:10px">150# RF</td>
+    <td style="text-align:right;font-weight:700">$5,360</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">6</td>
+    <td style="text-align:right">$4,839</td>
+    <td style="text-align:center;font-weight:700;color:#0F6E56">0.903</td>
+    <td><span class="ev-badge" style="background:#E1F5EE;color:#085041;font-size:9px">저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP LEVEL TRANSMITTER</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$1,572</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">18</td>
+    <td style="text-align:right">$1,100</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.700</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP LEVEL TRANSMITTER</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$1,572</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">12</td>
+    <td style="text-align:right">$1,318</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.838</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP LEVEL TRANSMITTER</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$1,572</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">13</td>
+    <td style="text-align:right">$2,666</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.695</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP LEVEL TRANSMITTER</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$2,535</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">6</td>
+    <td style="text-align:right">$1,832</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.723</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP LEVEL TRANSMITTER</td>
+    <td style="font-size:10px">Hastelloy C-276</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$3,497</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">9</td>
+    <td style="text-align:right">$3,670</td>
+    <td style="text-align:center;font-weight:700;color:#3B6D11">1.049</td>
+    <td><span class="ev-badge" style="background:#EAF3DE;color:#375623;font-size:9px">적정</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP LEVEL TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">150# RF</td>
+    <td style="text-align:right;font-weight:700">$2,766</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">5</td>
+    <td style="text-align:right">$2,119</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.766</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP LEVEL TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$3,046</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">6</td>
+    <td style="text-align:right">$2,205</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.724</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP LEVEL TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">Alloy 625</td>
+    <td style="white-space:nowrap;font-size:10px">150# FF</td>
+    <td style="text-align:right;font-weight:700">$3,728</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">2</td>
+    <td style="text-align:right">$5,164</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.385</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP LEVEL TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">150# RF</td>
+    <td style="text-align:right;font-weight:700">$3,728</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">2</td>
+    <td style="text-align:right">$5,164</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.385</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DP LEVEL TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$4,008</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">2</td>
+    <td style="text-align:right">$5,274</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.316</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TRANSMITTER</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$1,201</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">141</td>
+    <td style="text-align:right">$838</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.698</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TRANSMITTER</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$1,201</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">82</td>
+    <td style="text-align:right">$1,133</td>
+    <td style="text-align:center;font-weight:700;color:#0F6E56">0.943</td>
+    <td><span class="ev-badge" style="background:#E1F5EE;color:#085041;font-size:9px">저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TRANSMITTER</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$1,201</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">446</td>
+    <td style="text-align:right">$1,773</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.477</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TRANSMITTER</td>
+    <td style="font-size:10px">Alloy 625</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$2,163</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">31</td>
+    <td style="text-align:right">$1,053</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.487</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TRANSMITTER</td>
+    <td style="font-size:10px">Alloy 625</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$2,163</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">3</td>
+    <td style="text-align:right">$1,304</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.603</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TRANSMITTER</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$2,163</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">20</td>
+    <td style="text-align:right">$1,022</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.472</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TRANSMITTER</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$2,163</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">121</td>
+    <td style="text-align:right">$1,272</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.588</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TRANSMITTER</td>
+    <td style="font-size:10px">Super Duplex SS</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$2,163</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">2</td>
+    <td style="text-align:right">$1,096</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.507</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TRANSMITTER</td>
+    <td style="font-size:10px">Hastelloy C-276</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$3,126</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">30</td>
+    <td style="text-align:right">$2,167</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.693</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">150# RF</td>
+    <td style="text-align:right;font-weight:700">$1,372</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">75</td>
+    <td style="text-align:right">$1,320</td>
+    <td style="text-align:center;font-weight:700;color:#3B6D11">0.962</td>
+    <td><span class="ev-badge" style="background:#EAF3DE;color:#375623;font-size:9px">적정</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">150# RF</td>
+    <td style="text-align:right;font-weight:700">$1,372</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">38</td>
+    <td style="text-align:right">$1,546</td>
+    <td style="text-align:center;font-weight:700;color:#BA7517">1.126</td>
+    <td><span class="ev-badge" style="background:#FAEEDA;color:#633806;font-size:9px">고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$1,653</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">94</td>
+    <td style="text-align:right">$1,349</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.816</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">600# RF</td>
+    <td style="text-align:right;font-weight:700">$1,653</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">51</td>
+    <td style="text-align:right">$1,385</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.838</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">900# RTJ</td>
+    <td style="text-align:right;font-weight:700">$1,933</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">22</td>
+    <td style="text-align:right">$1,579</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.817</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">150# FF</td>
+    <td style="text-align:right;font-weight:700">$2,335</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">46</td>
+    <td style="text-align:right">$2,831</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.213</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">150# FF</td>
+    <td style="text-align:right;font-weight:700">$2,335</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">36</td>
+    <td style="text-align:right">$2,080</td>
+    <td style="text-align:center;font-weight:700;color:#0F6E56">0.891</td>
+    <td><span class="ev-badge" style="background:#E1F5EE;color:#085041;font-size:9px">저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$2,615</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">45</td>
+    <td style="text-align:right">$2,926</td>
+    <td style="text-align:center;font-weight:700;color:#BA7517">1.119</td>
+    <td><span class="ev-badge" style="background:#FAEEDA;color:#633806;font-size:9px">고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$2,615</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">7</td>
+    <td style="text-align:right">$2,119</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.811</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">900# RTJ</td>
+    <td style="text-align:right;font-weight:700">$2,895</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">11</td>
+    <td style="text-align:right">$3,979</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.374</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">Alloy 625</td>
+    <td style="white-space:nowrap;font-size:10px">150# RF</td>
+    <td style="text-align:right;font-weight:700">$2,335</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">12</td>
+    <td style="text-align:right">$2,720</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.165</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TX (DIAPH. SEAL)</td>
+    <td style="font-size:10px">Alloy 625</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$2,615</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">14</td>
+    <td style="text-align:right">$2,926</td>
+    <td style="text-align:center;font-weight:700;color:#BA7517">1.119</td>
+    <td><span class="ev-badge" style="background:#FAEEDA;color:#633806;font-size:9px">고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TX (REMOTE SEAL)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$3,191</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">31</td>
+    <td style="text-align:right">$2,921</td>
+    <td style="text-align:center;font-weight:700;color:#0F6E56">0.916</td>
+    <td><span class="ev-badge" style="background:#E1F5EE;color:#085041;font-size:9px">저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TX (REMOTE SEAL)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">600# RF</td>
+    <td style="text-align:right;font-weight:700">$3,191</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">6</td>
+    <td style="text-align:right">$3,065</td>
+    <td style="text-align:center;font-weight:700;color:#3B6D11">0.961</td>
+    <td><span class="ev-badge" style="background:#EAF3DE;color:#375623;font-size:9px">적정</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TX (REMOTE SEAL)</td>
+    <td style="font-size:10px">Hastelloy (Gold)</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$5,116</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">6</td>
+    <td style="text-align:right">$6,080</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.189</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">PRESSURE TX (REMOTE SEAL)</td>
+    <td style="font-size:10px">Hastelloy (Gold)</td>
+    <td style="white-space:nowrap;font-size:10px">600# RF</td>
+    <td style="text-align:right;font-weight:700">$5,116</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">3</td>
+    <td style="text-align:right">$6,224</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.217</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$1,614</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">123</td>
+    <td style="text-align:right">$1,130</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.700</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$1,614</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">70</td>
+    <td style="text-align:right">$1,303</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.807</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$1,614</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">219</td>
+    <td style="text-align:right">$2,329</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.443</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX</td>
+    <td style="font-size:10px">Alloy 625</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$2,577</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">43</td>
+    <td style="text-align:right">$2,010</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.780</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX</td>
+    <td style="font-size:10px">Alloy 625</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$2,577</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">1</td>
+    <td style="text-align:right">$1,904</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.739</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$2,577</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">14</td>
+    <td style="text-align:right">$1,854</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.720</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$2,577</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">33</td>
+    <td style="text-align:right">$1,818</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.706</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX</td>
+    <td style="font-size:10px">Super Duplex SS</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$2,577</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">6</td>
+    <td style="text-align:right">$1,304</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.506</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX</td>
+    <td style="font-size:10px">Hastelloy C-276</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$3,539</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">36</td>
+    <td style="text-align:right">$3,337</td>
+    <td style="text-align:center;font-weight:700;color:#0F6E56">0.943</td>
+    <td><span class="ev-badge" style="background:#E1F5EE;color:#085041;font-size:9px">저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX (DIAPH.)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">150# RF</td>
+    <td style="text-align:right;font-weight:700">$2,490</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">44</td>
+    <td style="text-align:right">$2,096</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.842</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX (DIAPH.)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">150# RF</td>
+    <td style="text-align:right;font-weight:700">$2,490</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">6</td>
+    <td style="text-align:right">$2,378</td>
+    <td style="text-align:center;font-weight:700;color:#3B6D11">0.955</td>
+    <td><span class="ev-badge" style="background:#EAF3DE;color:#375623;font-size:9px">적정</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX (DIAPH.)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$2,770</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">76</td>
+    <td style="text-align:right">$2,205</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.796</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX (DIAPH.)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$2,770</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">1</td>
+    <td style="text-align:right">$2,417</td>
+    <td style="text-align:center;font-weight:700;color:#0F6E56">0.872</td>
+    <td><span class="ev-badge" style="background:#E1F5EE;color:#085041;font-size:9px">저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX (DIAPH.)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">600# RF</td>
+    <td style="text-align:right;font-weight:700">$2,770</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">65</td>
+    <td style="text-align:right">$2,372</td>
+    <td style="text-align:center;font-weight:700;color:#0F6E56">0.856</td>
+    <td><span class="ev-badge" style="background:#E1F5EE;color:#085041;font-size:9px">저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX (DIAPH.)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">900# RTJ</td>
+    <td style="text-align:right;font-weight:700">$3,050</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">21</td>
+    <td style="text-align:right">$2,580</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.846</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX (DIAPH.)</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">150# FF</td>
+    <td style="text-align:right;font-weight:700">$3,453</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">12</td>
+    <td style="text-align:right">$5,164</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.496</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX (DIAPH.)</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">150# FF</td>
+    <td style="text-align:right;font-weight:700">$3,453</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">6</td>
+    <td style="text-align:right">$3,567</td>
+    <td style="text-align:center;font-weight:700;color:#3B6D11">1.033</td>
+    <td><span class="ev-badge" style="background:#EAF3DE;color:#375623;font-size:9px">적정</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX (DIAPH.)</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$3,733</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">17</td>
+    <td style="text-align:right">$4,903</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.313</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX (DIAPH.)</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">600# RF</td>
+    <td style="text-align:right;font-weight:700">$3,733</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">6</td>
+    <td style="text-align:right">$5,399</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.446</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX (DIAPH.)</td>
+    <td style="font-size:10px">6Mo-UNS S31254</td>
+    <td style="white-space:nowrap;font-size:10px">900# RTJ</td>
+    <td style="text-align:right;font-weight:700">$4,013</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">8</td>
+    <td style="text-align:right">$7,380</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.839</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX (DIAPH.)</td>
+    <td style="font-size:10px">Alloy 625</td>
+    <td style="white-space:nowrap;font-size:10px">150# FF</td>
+    <td style="text-align:right;font-weight:700">$3,453</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">2</td>
+    <td style="text-align:right">$5,164</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.496</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX (DIAPH.)</td>
+    <td style="font-size:10px">Alloy 625</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$3,733</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">12</td>
+    <td style="text-align:right">$5,274</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.413</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX (DIAPH.)</td>
+    <td style="font-size:10px">Super Duplex SS</td>
+    <td style="white-space:nowrap;font-size:10px">150# FF</td>
+    <td style="text-align:right;font-weight:700">$3,453</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">3</td>
+    <td style="text-align:right">$2,494</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.722</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX (REMOTE)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$6,756</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">15</td>
+    <td style="text-align:right">$4,425</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.655</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX (REMOTE)</td>
+    <td style="font-size:10px">316SS</td>
+    <td style="white-space:nowrap;font-size:10px">600# RF</td>
+    <td style="text-align:right;font-weight:700">$6,756</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">7</td>
+    <td style="text-align:right">$4,393</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.650</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX (REMOTE)</td>
+    <td style="font-size:10px">Hastelloy (Gold)</td>
+    <td style="white-space:nowrap;font-size:10px">300# RF</td>
+    <td style="text-align:right;font-weight:700">$8,680</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">9</td>
+    <td style="text-align:right">$10,743</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.238</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">DIFF. PRESSURE TX (REMOTE)</td>
+    <td style="font-size:10px">Hastelloy (Gold)</td>
+    <td style="white-space:nowrap;font-size:10px">600# RF</td>
+    <td style="text-align:right;font-weight:700">$8,680</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">15</td>
+    <td style="text-align:right">$10,875</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.253</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">TEMPERATURE TRANSMITTER</td>
+    <td style="font-size:10px">RTD</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$875</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">242</td>
+    <td style="text-align:right">$649</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.742</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">TEMPERATURE TRANSMITTER</td>
+    <td style="font-size:10px">RTD</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$875</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">66</td>
+    <td style="text-align:right">$572</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.654</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">TEMPERATURE TRANSMITTER</td>
+    <td style="font-size:10px">RTD</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$875</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">535</td>
+    <td style="text-align:right">$1,014</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.159</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">REMOTE INDICATOR</td>
+    <td style="font-size:10px">N/A</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$973</td>
+    <td style="font-weight:600">Yokogawa</td>
+    <td style="text-align:center">85</td>
+    <td style="text-align:right">$742</td>
+    <td style="text-align:center;font-weight:700;color:#185FA5">0.763</td>
+    <td><span class="ev-badge" style="background:#E6F1FB;color:#0C447C;font-size:9px">매우 저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">REMOTE INDICATOR</td>
+    <td style="font-size:10px">N/A</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$973</td>
+    <td style="font-weight:600">Emerson</td>
+    <td style="text-align:center">56</td>
+    <td style="text-align:right">$847</td>
+    <td style="text-align:center;font-weight:700;color:#0F6E56">0.871</td>
+    <td><span class="ev-badge" style="background:#E1F5EE;color:#085041;font-size:9px">저가</span></td>
+  </tr><tr>
+    <td style="font-size:10px">REMOTE INDICATOR</td>
+    <td style="font-size:10px">N/A</td>
+    <td style="white-space:nowrap;font-size:10px">N/A</td>
+    <td style="text-align:right;font-weight:700">$973</td>
+    <td style="font-weight:600">ABB</td>
+    <td style="text-align:center">37</td>
+    <td style="text-align:right">$1,694</td>
+    <td style="text-align:center;font-weight:700;color:#A32D2D">1.741</td>
+    <td><span class="ev-badge" style="background:#FCEBEB;color:#791F1F;font-size:9px">매우 고가</span></td>
+  </tr></tbody></table></div>
+</div>
+
+</div><!-- /container -->
+
+<footer>Field Transmitter Unit Price Index &nbsp;|&nbsp; Regression Model R²=0.781 &nbsp;|&nbsp; Data: SAFA PKG#1·#2, FGIP PKG#1 (2022)</footer>
+
+<script>
+function ev(r){
+  if(!r)return{l:'N/A',bg:'#F1EFE8',tx:'#5F5E5A',c:'#888'};
+  if(r<0.85)return{l:'매우 저가',bg:'#E6F1FB',tx:'#0C447C',c:'#185FA5'};
+  if(r<0.95)return{l:'저가',bg:'#E1F5EE',tx:'#085041',c:'#0F6E56'};
+  if(r<=1.05)return{l:'적정',bg:'#EAF3DE',tx:'#375623',c:'#3B6D11'};
+  if(r<=1.15)return{l:'고가',bg:'#FAEEDA',tx:'#633806',c:'#BA7517'};
+  return{l:'매우 고가',bg:'#FCEBEB',tx:'#791F1F',c:'#A32D2D'};
+}
+
+const vendors=[
+  {v:'Yokogawa',p:'SAFA PKG#1',qty:1837,total:3575542,wu:1946,wi:2131,r:0.913},
+  {v:'Emerson', p:'SAFA PKG#2',qty:846, total:1309693,wu:1548,wi:1944,r:0.796},
+  {v:'ABB',     p:'FGIP PKG#1',qty:1819,total:3978662,wu:2187,wi:1817,r:1.204}
+];
+const vc=document.getElementById('vdr-cards');
+vendors.forEach(d=>{
+  const e=ev(d.r);const pct=Math.min(d.r/2*100,100);const mid=50;
+  const left=Math.min(mid,pct);const w=Math.abs(pct-mid);
+  vc.innerHTML+=`<div class="card">
+    <div class="vdr-name">${d.v}</div>
+    <div class="vdr-prj">${d.p}</div>
+    <div class="kpi-grid">
+      <div class="kpi-box"><div class="kpi-lbl">총 수량</div><div class="kpi-val">${d.qty.toLocaleString()} EA</div></div>
+      <div class="kpi-box"><div class="kpi-lbl">가중평균단가</div><div class="kpi-val">$${d.wu.toLocaleString()}</div></div>
+      <div class="kpi-box"><div class="kpi-lbl">Index 기준단가</div><div class="kpi-val" style="color:#666">$${d.wi.toLocaleString()}</div></div>
+      <div class="kpi-box"><div class="kpi-lbl">견적 총액</div><div class="kpi-val" style="color:#666">$${(d.total/1e6).toFixed(2)}M</div></div>
+    </div>
+    <div class="gauge-wrap">
+      <div class="gauge-lbl">단가 비율 (실제/Index)</div>
+      <div class="gauge-bg">
+        <div class="gauge-fill" style="margin-left:${left}%;width:${w}%;background:${e.c}"></div>
+        <div class="gauge-mid"></div>
+      </div>
+    </div>
+    <div class="ratio-row">
+      <span class="ratio-val" style="color:${e.c}">${d.r.toFixed(3)}</span>
+      <span class="ev-badge" style="background:${e.bg};color:${e.tx}">${e.l}</span>
+    </div>
+  </div>`;
+});
+
+const cats=[
+  {n:'DP FLOW TRANSMITTER',       Yq:367, Yu:2752,Yr:0.958, Eq:273,Eu:1870,Er:0.788, Aq:350,Au:3167,Ar:1.196},
+  {n:'INTEGRAL ORIFICE FLOWMETER',Yq:98,  Yu:3516,Yr:0.948, Eq:16, Eu:4698,Er:1.354, Aq:52, Au:3661,Ar:0.996},
+  {n:'DP LEVEL TRANSMITTER',      Yq:35,  Yu:2138,Yr:0.898, Eq:18, Eu:1489,Er:0.787, Aq:22, Au:3077,Ar:1.304},
+  {n:'PRESSURE TRANSMITTER',      Yq:567, Yu:1580,Yr:0.898, Eq:291,Eu:1394,Er:0.765, Aq:522,Au:1954,Ar:1.285},
+  {n:'DIFF. PRESSURE TRANSMITTER',Yq:443, Yu:2325,Yr:0.919, Eq:126,Eu:1639,Er:0.780, Aq:301,Au:3279,Ar:1.178},
+  {n:'TEMPERATURE TRANSMITTER',   Yq:242, Yu:649, Yr:0.742, Eq:66, Eu:572, Er:0.654, Aq:535,Au:1014,Ar:1.159},
+  {n:'REMOTE INDICATOR',          Yq:85,  Yu:742, Yr:0.763, Eq:56, Eu:847, Er:0.871, Aq:37, Au:1694,Ar:1.741}
+];
+function ctd(q,u,r){
+  if(!q)return'<td>—</td><td>—</td><td>—</td>';
+  const e=ev(r);
+  return`<td>${q.toLocaleString()}</td><td>$${u.toLocaleString()}</td><td><span class="ev-badge" style="background:${e.bg};color:${e.tx}">${r.toFixed(3)} ${e.l}</span></td>`;
+}
+const ct=document.getElementById('cat-tbl');
+ct.innerHTML=`<thead><tr>
+  <th>Category</th>
+  <th colspan="3" style="background:#deeaf1">Yokogawa / SAFA PKG#1</th>
+  <th colspan="3" style="background:#daeaff">Emerson / SAFA PKG#2</th>
+  <th colspan="3" style="background:#fce4d6">ABB / FGIP PKG#1</th>
+</tr><tr>
+  <th>Type</th>
+  <th>수량</th><th>가중평균단가</th><th>비율·평가</th>
+  <th>수량</th><th>가중평균단가</th><th>비율·평가</th>
+  <th>수량</th><th>가중평균단가</th><th>비율·평가</th>
+</tr></thead><tbody>`+
+cats.map(r=>`<tr><td>${r.n}</td>${ctd(r.Yq,r.Yu,r.Yr)}${ctd(r.Eq,r.Eu,r.Er)}${ctd(r.Aq,r.Au,r.Ar)}</tr>`).join('')+
+'</tbody>';
+
+const coefs=[
+  ['DP FLOW TX (REMOTE SEAL)',4614],['DIFF. PRESSURE TX (REMOTE SEAL)',4581],
+  ['INTEGRAL ORIFICE FLOWMETER',1541],['PRESSURE TX (REMOTE SEAL)',1016],
+  ['DP FLOW TX (DIAPHRAGM SEAL)',983],['DP LEVEL TX (DIAPHRAGM SEAL)',871],
+  ['DIFF. PRESSURE TX (DIAPHRAGM SEAL)',596],['DP FLOW TX',-68],
+  ['DP LEVEL TX',-42],['PRESSURE TX',-414],['PRESSURE TX (DIAPHRAGM SEAL)',-522],
+  ['REMOTE INDICATOR',-641],['TEMPERATURE TRANSMITTER',-740]
+];
+const maxC=4614;
+const cs=document.getElementById('coef-section');
+coefs.forEach(([l,v])=>{
+  const pct=(Math.abs(v)/maxC)*100;const pos=v>=0;
+  const c=pos?'#185FA5':'#A32D2D';
+  cs.innerHTML+=`<div class="coef-item" style="margin:3px 0">
+    <div class="coef-lbl">${l}</div>
+    <div class="coef-bar-bg"><div class="coef-bar-fill" style="width:${pct}%;background:${c}"></div></div>
+    <div class="coef-num" style="color:${c}">${pos?'+':''}${v}</div>
+  </div>`;
+});
+
+const preds=[
+  {t:'DP FLOW TRANSMITTER',m:'Alloy 625',s:'N/A',i:2509,Yq:56,Yu:2010,Yr:0.801,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'DP FLOW TRANSMITTER',m:'316SS',s:'N/A',i:1547,Yq:70,Yu:1100,Yr:0.711,Eq:107,Eu:1342,Er:0.868,Aq:253,Au:2301,Ar:1.488},
+  {t:'DP FLOW TRANSMITTER',m:'6Mo-UNS S31254',s:'N/A',i:2509,Yq:40,Yu:1870,Yr:0.745,Eq:110,Eu:1828,Er:0.729,Aq:null,Au:null,Ar:null},
+  {t:'DP FLOW TRANSMITTER',m:'Hastelloy C-276',s:'N/A',i:3471,Yq:null,Yu:null,Yr:null,Eq:null,Eu:null,Er:null,Aq:51,Au:3290,Ar:0.948},
+  {t:'DP FLOW TX (DIAPH. SEAL)',m:'316SS',s:'150# RF',i:2878,Yq:41,Yu:2248,Yr:0.781,Eq:10,Eu:2404,Er:0.835,Aq:null,Au:null,Ar:null},
+  {t:'DP FLOW TX (DIAPH. SEAL)',m:'316SS',s:'300# RF',i:3158,Yq:35,Yu:2205,Yr:0.698,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'DP FLOW TX (DIAPH. SEAL)',m:'316SS',s:'600# RF',i:3158,Yq:28,Yu:2392,Yr:0.758,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'DP FLOW TX (DIAPH. SEAL)',m:'316SS',s:'900# RTJ',i:3438,Yq:4,Yu:2580,Yr:0.750,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'DP FLOW TX (DIAPH. SEAL)',m:'6Mo-UNS S31254',s:'150# FF',i:3840,Yq:21,Yu:5164,Yr:1.345,Eq:43,Eu:3051,Er:0.794,Aq:null,Au:null,Ar:null},
+  {t:'DP FLOW TX (DIAPH. SEAL)',m:'6Mo-UNS S31254',s:'300# RF',i:4120,Yq:28,Yu:5274,Yr:1.280,Eq:2,Eu:3496,Er:0.848,Aq:null,Au:null,Ar:null},
+  {t:'DP FLOW TX (DIAPH. SEAL)',m:'6Mo-UNS S31254',s:'900# RTJ',i:4400,Yq:6,Yu:7380,Yr:1.677,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'DP FLOW TX (DIAPH. SEAL)',m:'Alloy 625',s:'150# RF',i:3840,Yq:12,Yu:5164,Yr:1.345,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'DP FLOW TX (DIAPH. SEAL)',m:'Alloy 625',s:'300# RF',i:4120,Yq:22,Yu:5274,Yr:1.280,Eq:1,Eu:3495,Er:0.848,Aq:null,Au:null,Ar:null},
+  {t:'DP FLOW TX (REMOTE SEAL)',m:'316SS',s:'300# RF',i:6789,Yq:null,Yu:null,Yr:null,Eq:null,Eu:null,Er:null,Aq:10,Au:4336,Ar:0.639},
+  {t:'DP FLOW TX (REMOTE SEAL)',m:'316SS',s:'600# RF',i:6789,Yq:null,Yu:null,Yr:null,Eq:null,Eu:null,Er:null,Aq:12,Au:4608,Ar:0.679},
+  {t:'DP FLOW TX (REMOTE SEAL)',m:'Hastelloy (Gold)',s:'300# RF',i:8714,Yq:null,Yu:null,Yr:null,Eq:null,Eu:null,Er:null,Aq:21,Au:10743,Ar:1.233},
+  {t:'DP FLOW TX (REMOTE SEAL)',m:'Hastelloy (Gold)',s:'600# RF',i:8714,Yq:null,Yu:null,Yr:null,Eq:null,Eu:null,Er:null,Aq:3,Au:11409,Ar:1.309},
+  {t:'INTEGRAL ORIFICE FM',m:'Bronze',s:'300# RF',i:3716,Yq:null,Yu:null,Yr:null,Eq:1,Eu:4368,Er:1.176,Aq:null,Au:null,Ar:null},
+  {t:'INTEGRAL ORIFICE FM',m:'316SS',s:'150# RF',i:3436,Yq:34,Yu:3284,Yr:0.956,Eq:14,Eu:4664,Er:1.358,Aq:43,Au:3587,Ar:1.044},
+  {t:'INTEGRAL ORIFICE FM',m:'316SS',s:'300# RF',i:3716,Yq:26,Yu:3457,Yr:0.930,Eq:1,Eu:5506,Er:1.482,Aq:null,Au:null,Ar:null},
+  {t:'INTEGRAL ORIFICE FM',m:'316SS',s:'600# RF',i:3716,Yq:6,Yu:3582,Yr:0.964,Eq:null,Eu:null,Er:null,Aq:3,Au:2362,Ar:0.636},
+  {t:'INTEGRAL ORIFICE FM',m:'316SS',s:'900# RTJ',i:3996,Yq:32,Yu:3799,Yr:0.951,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'INTEGRAL ORIFICE FM',m:'Hastelloy C-276',s:'150# RF',i:5360,Yq:null,Yu:null,Yr:null,Eq:null,Eu:null,Er:null,Aq:6,Au:4839,Ar:0.903},
+  {t:'DP LEVEL TRANSMITTER',m:'316SS',s:'N/A',i:1572,Yq:18,Yu:1100,Yr:0.700,Eq:12,Eu:1318,Er:0.838,Aq:13,Au:2666,Ar:1.695},
+  {t:'DP LEVEL TRANSMITTER',m:'6Mo-UNS S31254',s:'N/A',i:2535,Yq:null,Yu:null,Yr:null,Eq:6,Eu:1832,Er:0.723,Aq:null,Au:null,Ar:null},
+  {t:'DP LEVEL TRANSMITTER',m:'Hastelloy C-276',s:'N/A',i:3497,Yq:null,Yu:null,Yr:null,Eq:null,Eu:null,Er:null,Aq:9,Au:3670,Ar:1.049},
+  {t:'DP LEVEL TX (DIAPH. SEAL)',m:'316SS',s:'150# RF',i:2766,Yq:5,Yu:2119,Yr:0.766,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'DP LEVEL TX (DIAPH. SEAL)',m:'316SS',s:'300# RF',i:3046,Yq:6,Yu:2205,Yr:0.724,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'DP LEVEL TX (DIAPH. SEAL)',m:'Alloy 625',s:'150# FF',i:3728,Yq:2,Yu:5164,Yr:1.385,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'DP LEVEL TX (DIAPH. SEAL)',m:'6Mo-UNS S31254',s:'150# RF',i:3728,Yq:2,Yu:5164,Yr:1.385,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'DP LEVEL TX (DIAPH. SEAL)',m:'6Mo-UNS S31254',s:'300# RF',i:4008,Yq:2,Yu:5274,Yr:1.316,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'PRESSURE TRANSMITTER',m:'316SS',s:'N/A',i:1201,Yq:141,Yu:838,Yr:0.698,Eq:82,Eu:1133,Er:0.943,Aq:446,Au:1773,Ar:1.477},
+  {t:'PRESSURE TRANSMITTER',m:'Alloy 625',s:'N/A',i:2163,Yq:31,Yu:1053,Yr:0.487,Eq:3,Eu:1304,Er:0.603,Aq:null,Au:null,Ar:null},
+  {t:'PRESSURE TRANSMITTER',m:'6Mo-UNS S31254',s:'N/A',i:2163,Yq:20,Yu:1022,Yr:0.472,Eq:121,Eu:1272,Er:0.588,Aq:null,Au:null,Ar:null},
+  {t:'PRESSURE TRANSMITTER',m:'Super Duplex SS',s:'N/A',i:2163,Yq:null,Yu:null,Yr:null,Eq:2,Eu:1096,Er:0.507,Aq:null,Au:null,Ar:null},
+  {t:'PRESSURE TRANSMITTER',m:'Hastelloy C-276',s:'N/A',i:3126,Yq:null,Yu:null,Yr:null,Eq:null,Eu:null,Er:null,Aq:30,Au:2167,Ar:0.693},
+  {t:'PRESSURE TX (DIAPH. SEAL)',m:'316SS',s:'150# RF',i:1372,Yq:75,Yu:1320,Yr:0.962,Eq:38,Eu:1546,Er:1.126,Aq:null,Au:null,Ar:null},
+  {t:'PRESSURE TX (DIAPH. SEAL)',m:'316SS',s:'300# RF',i:1653,Yq:94,Yu:1349,Yr:0.816,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'PRESSURE TX (DIAPH. SEAL)',m:'316SS',s:'600# RF',i:1653,Yq:51,Yu:1385,Yr:0.838,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'PRESSURE TX (DIAPH. SEAL)',m:'316SS',s:'900# RTJ',i:1933,Yq:22,Yu:1579,Yr:0.817,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'PRESSURE TX (DIAPH. SEAL)',m:'6Mo-UNS S31254',s:'150# FF',i:2335,Yq:46,Yu:2831,Yr:1.213,Eq:36,Eu:2080,Er:0.891,Aq:null,Au:null,Ar:null},
+  {t:'PRESSURE TX (DIAPH. SEAL)',m:'6Mo-UNS S31254',s:'300# RF',i:2615,Yq:45,Yu:2926,Yr:1.119,Eq:7,Eu:2119,Er:0.811,Aq:null,Au:null,Ar:null},
+  {t:'PRESSURE TX (DIAPH. SEAL)',m:'6Mo-UNS S31254',s:'900# RTJ',i:2895,Yq:11,Yu:3979,Yr:1.374,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'PRESSURE TX (DIAPH. SEAL)',m:'Alloy 625',s:'150# RF',i:2335,Yq:12,Yu:2720,Yr:1.165,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'PRESSURE TX (DIAPH. SEAL)',m:'Alloy 625',s:'300# RF',i:2615,Yq:14,Yu:2926,Yr:1.119,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'PRESSURE TX (REMOTE SEAL)',m:'316SS',s:'300# RF',i:3191,Yq:null,Yu:null,Yr:null,Eq:null,Eu:null,Er:null,Aq:31,Au:2921,Ar:0.916},
+  {t:'PRESSURE TX (REMOTE SEAL)',m:'316SS',s:'600# RF',i:3191,Yq:null,Yu:null,Yr:null,Eq:null,Eu:null,Er:null,Aq:6,Au:3065,Ar:0.961},
+  {t:'PRESSURE TX (REMOTE SEAL)',m:'Hastelloy (Gold)',s:'300# RF',i:5116,Yq:null,Yu:null,Yr:null,Eq:null,Eu:null,Er:null,Aq:6,Au:6080,Ar:1.189},
+  {t:'PRESSURE TX (REMOTE SEAL)',m:'Hastelloy (Gold)',s:'600# RF',i:5116,Yq:null,Yu:null,Yr:null,Eq:null,Eu:null,Er:null,Aq:3,Au:6224,Ar:1.217},
+  {t:'DIFF. PRESSURE TX',m:'316SS',s:'N/A',i:1614,Yq:123,Yu:1130,Yr:0.700,Eq:70,Eu:1303,Er:0.807,Aq:219,Au:2329,Ar:1.443},
+  {t:'DIFF. PRESSURE TX',m:'Alloy 625',s:'N/A',i:2577,Yq:43,Yu:2010,Yr:0.780,Eq:1,Eu:1904,Er:0.739,Aq:null,Au:null,Ar:null},
+  {t:'DIFF. PRESSURE TX',m:'6Mo-UNS S31254',s:'N/A',i:2577,Yq:14,Yu:1854,Yr:0.720,Eq:33,Eu:1818,Er:0.706,Aq:null,Au:null,Ar:null},
+  {t:'DIFF. PRESSURE TX',m:'Super Duplex SS',s:'N/A',i:2577,Yq:null,Yu:null,Yr:null,Eq:6,Eu:1304,Er:0.506,Aq:null,Au:null,Ar:null},
+  {t:'DIFF. PRESSURE TX',m:'Hastelloy C-276',s:'N/A',i:3539,Yq:null,Yu:null,Yr:null,Eq:null,Eu:null,Er:null,Aq:36,Au:3337,Ar:0.943},
+  {t:'DIFF. PRESSURE TX (DIAPH.)',m:'316SS',s:'150# RF',i:2490,Yq:44,Yu:2096,Yr:0.842,Eq:6,Eu:2378,Er:0.955,Aq:null,Au:null,Ar:null},
+  {t:'DIFF. PRESSURE TX (DIAPH.)',m:'316SS',s:'300# RF',i:2770,Yq:76,Yu:2205,Yr:0.796,Eq:1,Eu:2417,Er:0.872,Aq:null,Au:null,Ar:null},
+  {t:'DIFF. PRESSURE TX (DIAPH.)',m:'316SS',s:'600# RF',i:2770,Yq:65,Yu:2372,Yr:0.856,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'DIFF. PRESSURE TX (DIAPH.)',m:'316SS',s:'900# RTJ',i:3050,Yq:21,Yu:2580,Yr:0.846,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'DIFF. PRESSURE TX (DIAPH.)',m:'6Mo-UNS S31254',s:'150# FF',i:3453,Yq:12,Yu:5164,Yr:1.496,Eq:6,Eu:3567,Er:1.033,Aq:null,Au:null,Ar:null},
+  {t:'DIFF. PRESSURE TX (DIAPH.)',m:'6Mo-UNS S31254',s:'300# RF',i:3733,Yq:17,Yu:4903,Yr:1.313,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'DIFF. PRESSURE TX (DIAPH.)',m:'6Mo-UNS S31254',s:'600# RF',i:3733,Yq:6,Yu:5399,Yr:1.446,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'DIFF. PRESSURE TX (DIAPH.)',m:'6Mo-UNS S31254',s:'900# RTJ',i:4013,Yq:8,Yu:7380,Yr:1.839,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'DIFF. PRESSURE TX (DIAPH.)',m:'Alloy 625',s:'150# FF',i:3453,Yq:2,Yu:5164,Yr:1.496,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'DIFF. PRESSURE TX (DIAPH.)',m:'Alloy 625',s:'300# RF',i:3733,Yq:12,Yu:5274,Yr:1.413,Eq:null,Eu:null,Er:null,Aq:null,Au:null,Ar:null},
+  {t:'DIFF. PRESSURE TX (DIAPH.)',m:'Super Duplex SS',s:'150# FF',i:3453,Yq:null,Yu:null,Yr:null,Eq:3,Eu:2494,Er:0.722,Aq:null,Au:null,Ar:null},
+  {t:'DIFF. PRESSURE TX (REMOTE)',m:'316SS',s:'300# RF',i:6756,Yq:null,Yu:null,Yr:null,Eq:null,Eu:null,Er:null,Aq:15,Au:4425,Ar:0.655},
+  {t:'DIFF. PRESSURE TX (REMOTE)',m:'316SS',s:'600# RF',i:6756,Yq:null,Yu:null,Yr:null,Eq:null,Eu:null,Er:null,Aq:7,Au:4393,Ar:0.650},
+  {t:'DIFF. PRESSURE TX (REMOTE)',m:'Hastelloy (Gold)',s:'300# RF',i:8680,Yq:null,Yu:null,Yr:null,Eq:null,Eu:null,Er:null,Aq:9,Au:10743,Ar:1.238},
+  {t:'DIFF. PRESSURE TX (REMOTE)',m:'Hastelloy (Gold)',s:'600# RF',i:8680,Yq:null,Yu:null,Yr:null,Eq:null,Eu:null,Er:null,Aq:15,Au:10875,Ar:1.253},
+  {t:'TEMPERATURE TRANSMITTER',m:'RTD',s:'N/A',i:875,Yq:242,Yu:649,Yr:0.742,Eq:66,Eu:572,Er:0.654,Aq:535,Au:1014,Ar:1.159},
+  {t:'REMOTE INDICATOR',m:'N/A',s:'N/A',i:973,Yq:85,Yu:742,Yr:0.763,Eq:56,Eu:847,Er:0.871,Aq:37,Au:1694,Ar:1.741}
+];
+
+const types=[...new Set(preds.map(r=>r.t))];
+const fs=document.getElementById('f-type');
+types.forEach(t=>{const o=document.createElement('option');o.value=t;o.textContent=t;fs.appendChild(o);});
+
+function renderPred(){
+  const ft=document.getElementById('f-type').value;
+  const fv=document.getElementById('f-vendor').value;
+  const fe=document.getElementById('f-eval').value;
+  let rows=[];
+  preds.forEach(r=>{
+    if(ft&&r.t!==ft)return;
+    [['Yokogawa',r.Yq,r.Yu,r.Yr],['Emerson',r.Eq,r.Eu,r.Er],['ABB',r.Aq,r.Au,r.Ar]].forEach(([v,q,u,rat])=>{
+      if(fv&&v!==fv)return;
+      if(!u)return;
+      const e=ev(rat);
+      if(fe&&e.l!==fe)return;
+      rows.push({t:r.t,m:r.m,s:r.s,i:r.i,v,q,u,rat,e});
+    });
+  });
+  document.getElementById('pred-count').textContent=`${rows.length}건`;
+  const tbl=document.getElementById('pred-tbl');
+  tbl.innerHTML=`<thead><tr>
+    <th>Type</th><th>Material</th><th>Size</th>
+    <th>Index(USD)</th><th>Vendor</th><th>수량</th>
+    <th>실제단가(USD)</th><th>비율</th><th>평가</th>
+  </tr></thead><tbody>`+
+  rows.map((r,i)=>`<tr>
+    <td style="font-size:10px">${r.t}</td>
+    <td style="font-size:10px">${r.m}</td>
+    <td style="white-space:nowrap;font-size:10px">${r.s}</td>
+    <td style="text-align:right;font-weight:700">$${r.i.toLocaleString()}</td>
+    <td style="font-weight:600">${r.v}</td>
+    <td style="text-align:center">${r.q}</td>
+    <td style="text-align:right">$${r.u.toLocaleString()}</td>
+    <td style="text-align:center;font-weight:700;color:${r.e.c}">${r.rat?r.rat.toFixed(3):''}</td>
+    <td><span class="ev-badge" style="background:${r.e.bg};color:${r.e.tx};font-size:9px">${r.e.l}</span></td>
+  </tr>`).join('')+'</tbody>';
+}
+renderPred();
+</script>
+
+
+</body></html>
